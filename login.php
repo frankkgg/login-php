@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,6 +16,11 @@
 
 
     <h1>Login</h1>
+    <?php
+ if(!empty($_GET['message'])): ?>
+    <h2><?= $_GET['message'] ?></h2>
+ <?php endif; ?>
+
     <span>or
     <a href="signup.php">SignUp</a>
      </span>
