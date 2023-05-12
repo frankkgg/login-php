@@ -1,24 +1,3 @@
-<?php require
-    'database.php';
-
-$message = '';
-
-
-    if (!empty($_POST['email']) && !empty($_POST['password'])){
-        $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
-        $stmt = $cone->prepare($sql);
-        $stmt->bindParam(':email', $_POST['email']);
-        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
-        $stmt->bindParam(':password', $password);
-
-        if ($stmt->execute()){
-            $message = 'Succesfully created new user';
-        } else {
-            $message = 'Sorry there must have been an issue creating your account';
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -30,21 +9,22 @@ $message = '';
     <title>Document</title>
 </head>
 <body>
+ 
+<?php require "assets/partials/header.php" ?>
 
-     <?php require "assets/partials/header.php" ?>
-
-     <?php if(!empty($message)): ?>
-        <p><?= $message ?></p>
-        <?php endif; ?>
 
      <h1>SignUp</h1>
+     <?php
+ if(!empty($_GET['message'])): ?>
+    <h2><?= $_GET['message'] ?></h2>
+ <?php endif; ?>
 
      <span>or <a href="signup.php">Login</a>
      </span>
         
-    <form action="login.php" method="post">
+    <form action="saveuser.php" method="post">
 
-    <input type="text" email="email" placeholder="Enter your email">
+    <input type="text" name="email" placeholder="Enter your email">
         <input type="password" name="password" placeholder="Enter your password">
         <input type="password" name="confirm_password" placeholder="Confirm your password">
 
