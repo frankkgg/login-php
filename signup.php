@@ -39,12 +39,12 @@ $message = '';
 
      <h1>SignUp</h1>
 
-     <span>or <a href="signup.php">Login</a>
+     <span>or <a href="login.php">Login</a>
      </span>
         
-    <form action="login.php" method="post">
+    <form action="signup.php" method="post">
 
-    <input type="text" email="email" placeholder="Enter your email">
+    <input type="text" name="email" placeholder="Enter your email">
         <input type="password" name="password" placeholder="Enter your password">
         <input type="password" name="confirm_password" placeholder="Confirm your password">
 
